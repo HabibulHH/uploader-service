@@ -4,10 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const resourceDropdown = document.getElementById('resource');
   const contentDropdown = document.getElementById('content');
 
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzE4Mjc1MjAsImV4cCI6MTczMTkxMzkyMH0._wA09OKIuSxQ0LGCtLhvnYQ4NMkNVBHg9-5g-NbsM_s';
   // Fetch course options from the server
   fetch('https://app.hirahasan.com/courses', {
     headers: {
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzE3NDEwMDksImV4cCI6MTczMTgyNzQwOX0.SILJArxbIyYJ-ccxn39TMnYpRm72VN9JY7C3EbpzRmE'
+      'Authorization': `Bearer ${token}`
     }
   })
   .then(response => {
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Fetch classes based on selected course code
       fetch(`https://app.hirahasan.com/classes/course/${selectedCourseCode}`, {
         headers: {
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzE3NDEwMDksImV4cCI6MTczMTgyNzQwOX0.SILJArxbIyYJ-ccxn39TMnYpRm72VN9JY7C3EbpzRmE'
+          'Authorization': `Bearer ${token}`
         }
       })
       .then(response => response.json())
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Fetch resources based on selected class ID
       fetch(`https://app.hirahasan.com/resources/${selectedClassId}`, {
         headers: {
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzE3NDEwMDksImV4cCI6MTczMTgyNzQwOX0.SILJArxbIyYJ-ccxn39TMnYpRm72VN9JY7C3EbpzRmE'
+          'Authorization': `Bearer ${token}`
         }
       })
       .then(response => response.json())
@@ -126,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Fetch contents based on selected resource ID
       fetch(`https://app.hirahasan.com/contents/resource/${selectedResourceId}`, {
         headers: {
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzE3NDEwMDksImV4cCI6MTczMTgyNzQwOX0.SILJArxbIyYJ-ccxn39TMnYpRm72VN9JY7C3EbpzRmE'
+          'Authorization': `Bearer ${token}`
         }
       })
       .then(response => response.json())

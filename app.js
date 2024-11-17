@@ -38,9 +38,11 @@
       }
       
       const folderPath = req.body.folderPath; // Get the folder path from the request body
-      const filePath = path.join(__dirname, 'uploads', folderPath, req.file.filename + '.mp4');
-      const responsePath = 'uploads/' + folderPath + '/' + req.file.filename + '.mp4';
+      const originalFileName = req.file.originalname; // Use the original file name
+      const filePath = path.join(__dirname, 'uploads', folderPath, originalFileName);
+      const responsePath = 'uploads/' + folderPath + '/' + originalFileName;
 
+      console.log('Creating folder:', path.dirname(filePath));
       await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
 
       await fs.promises.rename(req.file.path, filePath);
